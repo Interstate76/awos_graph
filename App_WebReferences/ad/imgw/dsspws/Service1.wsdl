@@ -1,0 +1,936 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="dssp.imgw.ad" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="dssp.imgw.ad" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="dssp.imgw.ad">
+      <s:element name="GetTime">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTimeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListStacja">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lst_stacja" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetListStacjaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetListStacjaResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetList_Awaria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id_oddzial" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetList_AwariaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetList_AwariaResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetList_AwariaInne">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id_oddzial" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetList_AwariaInneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetList_AwariaInneResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAwaria_szczeg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id_zgl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAwaria_szczegResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAwaria_szczegResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSensor">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSensorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindSensorResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSensor_szczeg">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="sn" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FindSensor_szczegResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FindSensor_szczegResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetList_WaznoscCujnikow">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="id_oddzial" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetList_WaznoscCujnikowResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetList_WaznoscCujnikowResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getWSVersion">
+        <s:complexType />
+      </s:element>
+      <s:element name="getWSVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getWSVersionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FreezeChannel">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SutronParameter" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rtu_code" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="kto" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="freeze" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="termin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="comment" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FreezeChannelResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="FreezeChannelResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRtuPK">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="kod" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRtuPKResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRtuPKResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChannels">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="rtu_pk" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChannelsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetChannelsResult" type="tns:ArrayOfChannelItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfChannelItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ChannelItem" nillable="true" type="tns:ChannelItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ChannelItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PK" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DRE_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PARAMETER_CODE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SUTRON_PARAM" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FREEZE" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="DT_FREEZE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ACTIVE" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSerwisInsert">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rtu_pk" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="channels_pk" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="termin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSerwisInsertResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSerwisInsertResult" type="tns:ArrayOfMeasurementItem" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMeasurementItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MeasurementItem" nillable="true" type="tns:MeasurementItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MeasurementItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ch_pk" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="value" type="s:float" />
+          <s:element minOccurs="1" maxOccurs="1" name="termin" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="domainLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="role" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="domainLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="domainLogResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="domainLog2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="role" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="domainLog2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="domainLog2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mobPermissions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InputData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mobPermissionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mobPermissionsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mobGetRaport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="crpt" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mobGetRaportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mobGetRaportResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mobGetLnx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="crpt" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mobGetLnxResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mobGetLnxResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mobGetEkipy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="crpt" type="s:short" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="mobGetEkipyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="mobGetEkipyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLLSask">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="crpt" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLLSaskResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLLSaskResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="telefonDyzurny">
+        <s:complexType />
+      </s:element>
+      <s:element name="telefonDyzurnyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="telefonDyzurnyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTime" />
+  </wsdl:message>
+  <wsdl:message name="GetTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetListStacjaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetListStacja" />
+  </wsdl:message>
+  <wsdl:message name="GetListStacjaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetListStacjaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetList_AwariaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetList_Awaria" />
+  </wsdl:message>
+  <wsdl:message name="GetList_AwariaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetList_AwariaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetList_AwariaInneSoapIn">
+    <wsdl:part name="parameters" element="tns:GetList_AwariaInne" />
+  </wsdl:message>
+  <wsdl:message name="GetList_AwariaInneSoapOut">
+    <wsdl:part name="parameters" element="tns:GetList_AwariaInneResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAwaria_szczegSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAwaria_szczeg" />
+  </wsdl:message>
+  <wsdl:message name="GetAwaria_szczegSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAwaria_szczegResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindSensorSoapIn">
+    <wsdl:part name="parameters" element="tns:FindSensor" />
+  </wsdl:message>
+  <wsdl:message name="FindSensorSoapOut">
+    <wsdl:part name="parameters" element="tns:FindSensorResponse" />
+  </wsdl:message>
+  <wsdl:message name="FindSensor_szczegSoapIn">
+    <wsdl:part name="parameters" element="tns:FindSensor_szczeg" />
+  </wsdl:message>
+  <wsdl:message name="FindSensor_szczegSoapOut">
+    <wsdl:part name="parameters" element="tns:FindSensor_szczegResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetList_WaznoscCujnikowSoapIn">
+    <wsdl:part name="parameters" element="tns:GetList_WaznoscCujnikow" />
+  </wsdl:message>
+  <wsdl:message name="GetList_WaznoscCujnikowSoapOut">
+    <wsdl:part name="parameters" element="tns:GetList_WaznoscCujnikowResponse" />
+  </wsdl:message>
+  <wsdl:message name="getWSVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:getWSVersion" />
+  </wsdl:message>
+  <wsdl:message name="getWSVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:getWSVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="FreezeChannelSoapIn">
+    <wsdl:part name="parameters" element="tns:FreezeChannel" />
+  </wsdl:message>
+  <wsdl:message name="FreezeChannelSoapOut">
+    <wsdl:part name="parameters" element="tns:FreezeChannelResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRtuPKSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRtuPK" />
+  </wsdl:message>
+  <wsdl:message name="GetRtuPKSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRtuPKResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetChannelsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetChannels" />
+  </wsdl:message>
+  <wsdl:message name="GetChannelsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetChannelsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSerwisInsertSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSerwisInsert" />
+  </wsdl:message>
+  <wsdl:message name="GetSerwisInsertSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSerwisInsertResponse" />
+  </wsdl:message>
+  <wsdl:message name="domainLogSoapIn">
+    <wsdl:part name="parameters" element="tns:domainLog" />
+  </wsdl:message>
+  <wsdl:message name="domainLogSoapOut">
+    <wsdl:part name="parameters" element="tns:domainLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="domainLog2SoapIn">
+    <wsdl:part name="parameters" element="tns:domainLog2" />
+  </wsdl:message>
+  <wsdl:message name="domainLog2SoapOut">
+    <wsdl:part name="parameters" element="tns:domainLog2Response" />
+  </wsdl:message>
+  <wsdl:message name="mobPermissionsSoapIn">
+    <wsdl:part name="parameters" element="tns:mobPermissions" />
+  </wsdl:message>
+  <wsdl:message name="mobPermissionsSoapOut">
+    <wsdl:part name="parameters" element="tns:mobPermissionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="mobGetRaportSoapIn">
+    <wsdl:part name="parameters" element="tns:mobGetRaport" />
+  </wsdl:message>
+  <wsdl:message name="mobGetRaportSoapOut">
+    <wsdl:part name="parameters" element="tns:mobGetRaportResponse" />
+  </wsdl:message>
+  <wsdl:message name="mobGetLnxSoapIn">
+    <wsdl:part name="parameters" element="tns:mobGetLnx" />
+  </wsdl:message>
+  <wsdl:message name="mobGetLnxSoapOut">
+    <wsdl:part name="parameters" element="tns:mobGetLnxResponse" />
+  </wsdl:message>
+  <wsdl:message name="mobGetEkipySoapIn">
+    <wsdl:part name="parameters" element="tns:mobGetEkipy" />
+  </wsdl:message>
+  <wsdl:message name="mobGetEkipySoapOut">
+    <wsdl:part name="parameters" element="tns:mobGetEkipyResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLLSaskSoapIn">
+    <wsdl:part name="parameters" element="tns:getLLSask" />
+  </wsdl:message>
+  <wsdl:message name="getLLSaskSoapOut">
+    <wsdl:part name="parameters" element="tns:getLLSaskResponse" />
+  </wsdl:message>
+  <wsdl:message name="telefonDyzurnySoapIn">
+    <wsdl:part name="parameters" element="tns:telefonDyzurny" />
+  </wsdl:message>
+  <wsdl:message name="telefonDyzurnySoapOut">
+    <wsdl:part name="parameters" element="tns:telefonDyzurnyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Service1Soap">
+    <wsdl:operation name="GetTime">
+      <wsdl:input message="tns:GetTimeSoapIn" />
+      <wsdl:output message="tns:GetTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetListStacja">
+      <wsdl:input message="tns:GetListStacjaSoapIn" />
+      <wsdl:output message="tns:GetListStacjaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetList_Awaria">
+      <wsdl:input message="tns:GetList_AwariaSoapIn" />
+      <wsdl:output message="tns:GetList_AwariaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetList_AwariaInne">
+      <wsdl:input message="tns:GetList_AwariaInneSoapIn" />
+      <wsdl:output message="tns:GetList_AwariaInneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAwaria_szczeg">
+      <wsdl:input message="tns:GetAwaria_szczegSoapIn" />
+      <wsdl:output message="tns:GetAwaria_szczegSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindSensor">
+      <wsdl:input message="tns:FindSensorSoapIn" />
+      <wsdl:output message="tns:FindSensorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FindSensor_szczeg">
+      <wsdl:input message="tns:FindSensor_szczegSoapIn" />
+      <wsdl:output message="tns:FindSensor_szczegSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetList_WaznoscCujnikow">
+      <wsdl:input message="tns:GetList_WaznoscCujnikowSoapIn" />
+      <wsdl:output message="tns:GetList_WaznoscCujnikowSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getWSVersion">
+      <wsdl:input message="tns:getWSVersionSoapIn" />
+      <wsdl:output message="tns:getWSVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FreezeChannel">
+      <wsdl:input message="tns:FreezeChannelSoapIn" />
+      <wsdl:output message="tns:FreezeChannelSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRtuPK">
+      <wsdl:input message="tns:GetRtuPKSoapIn" />
+      <wsdl:output message="tns:GetRtuPKSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChannels">
+      <wsdl:input message="tns:GetChannelsSoapIn" />
+      <wsdl:output message="tns:GetChannelsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSerwisInsert">
+      <wsdl:input message="tns:GetSerwisInsertSoapIn" />
+      <wsdl:output message="tns:GetSerwisInsertSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="domainLog">
+      <wsdl:input message="tns:domainLogSoapIn" />
+      <wsdl:output message="tns:domainLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="domainLog2">
+      <wsdl:input message="tns:domainLog2SoapIn" />
+      <wsdl:output message="tns:domainLog2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mobPermissions">
+      <wsdl:input message="tns:mobPermissionsSoapIn" />
+      <wsdl:output message="tns:mobPermissionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mobGetRaport">
+      <wsdl:input message="tns:mobGetRaportSoapIn" />
+      <wsdl:output message="tns:mobGetRaportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mobGetLnx">
+      <wsdl:input message="tns:mobGetLnxSoapIn" />
+      <wsdl:output message="tns:mobGetLnxSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mobGetEkipy">
+      <wsdl:input message="tns:mobGetEkipySoapIn" />
+      <wsdl:output message="tns:mobGetEkipySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLLSask">
+      <wsdl:input message="tns:getLLSaskSoapIn" />
+      <wsdl:output message="tns:getLLSaskSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="telefonDyzurny">
+      <wsdl:input message="tns:telefonDyzurnySoapIn" />
+      <wsdl:output message="tns:telefonDyzurnySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Service1Soap" type="tns:Service1Soap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTime">
+      <soap:operation soapAction="dssp.imgw.ad/GetTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListStacja">
+      <soap:operation soapAction="dssp.imgw.ad/GetListStacja" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetList_Awaria">
+      <soap:operation soapAction="dssp.imgw.ad/GetList_Awaria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetList_AwariaInne">
+      <soap:operation soapAction="dssp.imgw.ad/GetList_AwariaInne" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAwaria_szczeg">
+      <soap:operation soapAction="dssp.imgw.ad/GetAwaria_szczeg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSensor">
+      <soap:operation soapAction="dssp.imgw.ad/FindSensor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSensor_szczeg">
+      <soap:operation soapAction="dssp.imgw.ad/FindSensor_szczeg" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetList_WaznoscCujnikow">
+      <soap:operation soapAction="dssp.imgw.ad/GetList_WaznoscCujnikow" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWSVersion">
+      <soap:operation soapAction="dssp.imgw.ad/getWSVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FreezeChannel">
+      <soap:operation soapAction="dssp.imgw.ad/FreezeChannel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRtuPK">
+      <soap:operation soapAction="dssp.imgw.ad/GetRtuPK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChannels">
+      <soap:operation soapAction="dssp.imgw.ad/GetChannels" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSerwisInsert">
+      <soap:operation soapAction="dssp.imgw.ad/GetSerwisInsert" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="domainLog">
+      <soap:operation soapAction="dssp.imgw.ad/domainLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="domainLog2">
+      <soap:operation soapAction="dssp.imgw.ad/domainLog2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mobPermissions">
+      <soap:operation soapAction="dssp.imgw.ad/mobPermissions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mobGetRaport">
+      <soap:operation soapAction="dssp.imgw.ad/mobGetRaport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mobGetLnx">
+      <soap:operation soapAction="dssp.imgw.ad/mobGetLnx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mobGetEkipy">
+      <soap:operation soapAction="dssp.imgw.ad/mobGetEkipy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLLSask">
+      <soap:operation soapAction="dssp.imgw.ad/getLLSask" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="telefonDyzurny">
+      <soap:operation soapAction="dssp.imgw.ad/telefonDyzurny" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Service1Soap12" type="tns:Service1Soap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetTime">
+      <soap12:operation soapAction="dssp.imgw.ad/GetTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetListStacja">
+      <soap12:operation soapAction="dssp.imgw.ad/GetListStacja" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetList_Awaria">
+      <soap12:operation soapAction="dssp.imgw.ad/GetList_Awaria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetList_AwariaInne">
+      <soap12:operation soapAction="dssp.imgw.ad/GetList_AwariaInne" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAwaria_szczeg">
+      <soap12:operation soapAction="dssp.imgw.ad/GetAwaria_szczeg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSensor">
+      <soap12:operation soapAction="dssp.imgw.ad/FindSensor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindSensor_szczeg">
+      <soap12:operation soapAction="dssp.imgw.ad/FindSensor_szczeg" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetList_WaznoscCujnikow">
+      <soap12:operation soapAction="dssp.imgw.ad/GetList_WaznoscCujnikow" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getWSVersion">
+      <soap12:operation soapAction="dssp.imgw.ad/getWSVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FreezeChannel">
+      <soap12:operation soapAction="dssp.imgw.ad/FreezeChannel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRtuPK">
+      <soap12:operation soapAction="dssp.imgw.ad/GetRtuPK" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChannels">
+      <soap12:operation soapAction="dssp.imgw.ad/GetChannels" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSerwisInsert">
+      <soap12:operation soapAction="dssp.imgw.ad/GetSerwisInsert" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="domainLog">
+      <soap12:operation soapAction="dssp.imgw.ad/domainLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="domainLog2">
+      <soap12:operation soapAction="dssp.imgw.ad/domainLog2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mobPermissions">
+      <soap12:operation soapAction="dssp.imgw.ad/mobPermissions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mobGetRaport">
+      <soap12:operation soapAction="dssp.imgw.ad/mobGetRaport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mobGetLnx">
+      <soap12:operation soapAction="dssp.imgw.ad/mobGetLnx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mobGetEkipy">
+      <soap12:operation soapAction="dssp.imgw.ad/mobGetEkipy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLLSask">
+      <soap12:operation soapAction="dssp.imgw.ad/getLLSask" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="telefonDyzurny">
+      <soap12:operation soapAction="dssp.imgw.ad/telefonDyzurny" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="Service1Soap" binding="tns:Service1Soap">
+      <soap:address location="http://dsspws.imgw.ad:3333/Service1.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Service1Soap12" binding="tns:Service1Soap12">
+      <soap12:address location="http://dsspws.imgw.ad:3333/Service1.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

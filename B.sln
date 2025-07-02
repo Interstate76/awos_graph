@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AWOS_GRAPH", ".", "{2CC90D1E-F753-4089-9B31-6EFF723B7C30}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.7"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_56968"
+		Debug.AspNetCompiler.PhysicalPath = "..\AWOS_GRAPH\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56968\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_56968"
+		Release.AspNetCompiler.PhysicalPath = "..\AWOS_GRAPH\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_56968\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "56968"
+		SlnRelativePath = "..\AWOS_GRAPH\"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CC90D1E-F753-4089-9B31-6EFF723B7C30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CC90D1E-F753-4089-9B31-6EFF723B7C30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B427D184-5E8D-48FD-BE79-C11F62085C36}
+	EndGlobalSection
+EndGlobal
